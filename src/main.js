@@ -1,8 +1,12 @@
-import Vue from 'vue'
-import App from './App.vue'
+import DummyButton from './components/DummyButton.vue'
 
-Vue.config.productionTip = false
+function install (Vue, options) {
+  DummyButton.mixins = [options.mixin];
+  Vue.component('dummy-button', DummyButton)
+}
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+DummyButton.install = install;
+
+export default {
+  DummyButton
+};
